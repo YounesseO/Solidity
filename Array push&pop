@@ -1,0 +1,18 @@
+pragma solidity 0.6.11;
+ 
+contract Whitelist {
+ struct Person { // Structure de données
+     string name;
+     uint age; 
+ }
+ Person[] public people;
+ function add(string memory _name, uint _age) public {
+      Person memory person;  // création d'un nouveau objet
+      person.name = _name;
+      person.age = _age;
+      people.push(person); // Ajout de l'objet "Person" dans le tableau
+ }
+  function remove() public {
+      people.pop(); // Suppression du dernier objet du tableau
+ }
+}
