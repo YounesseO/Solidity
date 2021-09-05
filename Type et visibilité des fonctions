@@ -1,0 +1,11 @@
+pragma solidity ^0.6.11;
+
+contract HelloWorld {
+    
+    string myString = "Hello World !"; 
+    
+    function hello() view public returns(string memory){
+        return myString;
+    }
+    
+} 
