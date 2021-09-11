@@ -1,0 +1,9 @@
+pragma solidity 0.6.11;
+
+contract time {
+    
+    function getTime()view public returns(uint){
+        return block.timestamp;
+    }
+    
+}
