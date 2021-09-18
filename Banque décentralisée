@@ -1,9 +1,9 @@
 pragma solidity 0.8.0;
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/math/SafeMath.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/296223f876924da18b5aadd3343f4e2324f6176c/contracts/utils/math/SafeMath.sol";
 
 contract Bank{
     using SafeMath for uint; // Importation de la library SafeMath et application de son utilisation au type uint.
-    mapping (adresse => uint) _balances; // Mapping _balances pour stocker le solde detenu par un compte.
+    mapping (address => uint) _balances; // Mapping _balances pour stocker le solde detenu par un compte.
     
     // Permet d'effectuer un dépôt
     function deposit(uint _amout) public{
@@ -17,7 +17,7 @@ contract Bank{
     }
     
     // Permet de consulter la balance
-    function BalanceOf(address _address) public{
-        _balance[msg.sender];
+    function BalanceOf() public view returns (uint){
+        return _balances[msg.sender];
     }
 }
