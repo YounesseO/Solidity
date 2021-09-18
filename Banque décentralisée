@@ -1,0 +1,23 @@
+pragma solidity 0.8.0;
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/math/SafeMath.sol";
+
+contract Bank{
+    using SafeMath for uint; // Importation de la library SafeMath et application de son utilisation au type uint.
+    mapping (adresse => uint) _balances; // Mapping _balances pour stocker le solde detenu par un compte.
+    
+    // Permet d'effectuer un dépôt
+    function deposit(uint _amout) public{
+        _balances[msg.sender] = _balances[msg.sender].add(_amout); // Ajout de ".add" qui correspond à l'opéraeur + dans la library SafeMath.
+    }
+    
+    // Permet d'effectuer un transfert
+    function transfer(address _recipient, uint _amount) public{
+       _balances[_recipient] = _balances[_recipient].add(_amount); // Permet d'ajouter le montant avec ".add".
+       _balances[msg.sender] = _balances[msg.sender].sub(_amount);// Permet de soustraire le montant avec ".sub" qui correspond à l'opéraeur - dans la library SafeMath.
+    }
+    
+    // Permet de consulter la balance
+    function BalanceOf(address _address) public{
+        _balance[msg.sender];
+    }
+}
