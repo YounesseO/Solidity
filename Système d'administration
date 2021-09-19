@@ -1,0 +1,27 @@
+pragma solidity 0.8.0;
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/access/Ownable.sol";
+
+contract Admin is Ownable {
+    
+    mapping(address => bool) _whitelist;
+    mapping(address => bool) _blacklist; 
+    event Whitelisted(address _address);
+    event Blaklisted(address _address);
+    
+    function whiteList(address _address) public onlyOwner{
+        _whitelist[_address] = true;
+        emit Whitelisted(_address);
+    }
+    function blackList(address _address) public onlyOwner{
+        _blacklist[_address] = true;
+        _whitelist[_address] = false;
+        emit Blaklisted(_address);
+    }
+    function isWhitelisted(address _address) public view onlyOwner returns(bool) {
+      return _whitelist[_address];
+    }
+
+    function isBlacklisted(address _address) public view onlyOwner returns(bool) {
+        return _blacklist[_address];
+    }
+}
